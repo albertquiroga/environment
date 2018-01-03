@@ -1,0 +1,3 @@
+[submodule "stm"]
+	path = stm
+	url = https://github.com/albertquiroga/stm.git
