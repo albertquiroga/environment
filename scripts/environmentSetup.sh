@@ -44,8 +44,8 @@ git clone https://github.com/l4u/zsh-output-highlighting.git $PLUGINSPATH/zsh-ou
 
 # .zshrc file modifications
 sed -i 's/robbyrussell/agnoster/g' .zshrc                                                 # Change theme to agnoster
-printf '# ZSH syntax highlighting (must be at the end of the file)' >> .zshrc               # Add syntax hightlighting plugin
-printf "source $PLUGINSPATH/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> .zshrc  # Add syntax hightlighting plugin
+echo '# ZSH syntax highlighting (must be at the end of the file)' >> .zshrc               # Add syntax hightlighting plugin
+echo "source $PLUGINSPATH/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> .zshrc  # Add syntax hightlighting plugin
 sed -i "/plugins=($/a \ \ zsh-autosuggestions" .zshrc                                     # Add zsh-autosuggestions plugin
 sed -i "/plugins=($/a \ \ zsh-output-highlighting" .zshrc                                 # Add zsh-output-hightlighting plugin
 
