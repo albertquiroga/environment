@@ -8,6 +8,6 @@ DISKFREE=$(($MAXDISK-$DISKUSAGE))
 
 if [ "$DISKFREE" -lt "$THRESHOLD" ] ;
 then
-  /bin/sh /home/pyro/sendTelegramMessage.sh "Warning: disk usage is at $DISKUSAGE%"
+  stm "Warning: disk usage is at $DISKUSAGE%"
 fi
 
