@@ -1,18 +1,50 @@
 #!/bin/bash
 
-# Gets all GW2 material item IDs. This script parses the wiki page for Crafting materials to get all materials listed there,
-# then going to the wiki page of each material to get the specific ID. This involves heavy usage of grep, regex and sed, which
-# are explained here:
-# 1. Retrieve the materials wiki page
-# 2. Extract all links from it (all tags starting with "<a href=")
-# 3. Remove the "<a href=" part
-# 4. Remove the double quotes surrounding the link URL
-# 5. Only grab those links that are wiki pages (links starting with "/wiki/"). This will still include a lot of garbage, but
-#    the following parts will just ignore it
-# 6. Remove all duplicates
-# 7. For each line, get the wiki page for the item
-# 8. Get the line containing "API"
-# 9. Get the part containing "ids="
-# 10. Remove the "ids=" part
+MATERIALSPAGELINK="https://wiki.guildwars2.com/wiki/Crafting_material"
+echo "Extracting material item IDs from $MATERIALSPAGELINK. This will take some time... "
 
-curl -s https://wiki.guildwars2.com/wiki/Crafting_material\#Basic_crafting_materials | grep -o '<a href=['"'"'"][^"'"'"']*['"'"'"]' | sed 's/<a href=//' | sed 's/\"//g' | grep "^/wiki" | awk '!a[$0]++' | while read line; do curl -s https://wiki.guildwars2.com$line | grep API | grep -Eo 'ids=[0-9]+' | sed 's/ids=//' ; done
+# Get the GW2 crafting materials page
+MATERIALSPAGE="$(curl -s "$MATERIALSPAGELINK")"
+
+# Find all http hyperlinks in it
+HTTPHYPERLINKS="$(echo "$MATERIALSPAGE" | grep -o '<a href=['"'"'"][^"'"'"']*['"'"'"]')"
+
+# Remove the http hyperlink header and the surrounding double quotes from each hyperlink
+QUOTEDHYPERLINKS="$(echo "$HTTPHYPERLINKS" | sed 's/<a href=//' | sed 's/\"//g')"
+
+# Keep only the wiki page links and remove duplicates. This will still leave a lot of
+# garbage in the list, but the next steps will just ignore it
+WIKILINKSWITHNODUPLICATES="$(echo "$QUOTEDHYPERLINKS" | grep "^/wiki" | awk '!a[$0]++')"
+
+# For each wiki page link
+echo "$WIKILINKSWITHNODUPLICATES" | while read -r line; do
+
+  # If the line is empty (probably EOF), exit the loop
+  if [ -z "$line" ]
+  then
+    break
+  fi
+
+  # Follow that link and get the wiki item page
+  ITEMPAGE="$(curl -s https://wiki.guildwars2.com$line)"
+
+  # Retrieve the line containing "API"
+  APILINE="$(echo "$ITEMPAGE" | grep API)"
+
+  # Identify the part containing the ID and remove the "ids=" part
+  ITEMID="$(echo "$APILINE" | grep -Eo 'ids=[0-9]+' | sed 's/ids=//')"
+
+  # If it could retrieve an item ID
+  if [ ! -z "$ITEMID" ]
+  then
+    # Print each item ID with its name and link, by removing the "/wiki/" part from the link
+    PREFIX="/wiki/"
+    ITEMNAME="${line#$PREFIX}"
+    APIPREFIX="https://api.guildwars2.com/v2/commerce/prices/"
+    #echo "${line#$PREFIX}\t\t$ITEMID"
+    printf "%-40s %-10s %-70s\n" "$ITEMNAME" "$ITEMID" "$APIPREFIX$ITEMID"
+  fi
+
+done
+
+echo "Done!"
