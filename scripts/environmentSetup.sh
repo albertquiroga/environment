@@ -14,6 +14,12 @@ if ! [ -x "$(command -v git)" ]; then
   exit 1
 fi
 
+# Check if chsh is installed
+if ! [ -x "$(command -v chsh)" ]; then
+  printf "${RED}Error: chsh is not installed. Install package util-linux-user.${NC}\n" >&2
+  exit 1
+fi
+
 # Check if ZSH is installed
 if ! [ -x "$(command -v zsh)" ]; then
   printf "${RED}Error: zsh is not installed." >&2
