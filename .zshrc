@@ -7,7 +7,8 @@ export ZSH=/Users/bertolb/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
+#ZSH_THEME="agnoster"
+ZSH_THEME=powerlevel10k/powerlevel10k
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -62,6 +63,7 @@ plugins=(
   git
   zsh-autosuggestions
   zsh-output-highlighting
+  jsontools
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -95,10 +97,26 @@ DEFAULT_USER=bertolb
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias ec2-server="ssh -i /Users/bertolb/AWS/bertolb-ireland.pem ec2-user@ec2-54-76-181-118.eu-west-1.compute.amazonaws.com"
+# Customize the Powerlevel9k prompts
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_amazon dir)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status)
 
+# Add the custom Amazon icon prompt segment
+POWERLEVEL9K_CUSTOM_AMAZON="echo -n $'\uF270'"
+POWERLEVEL9K_CUSTOM_AMAZON_FOREGROUND="black"
+POWERLEVEL9K_CUSTOM_AMAZON_BACKGROUND="orange1"
+
+# Load Nerd Fonts with Powerlevel9k theme for Zsh
+POWERLEVEL9K_MODE='nerdfont-complete'
+
+# Exporting variables
+export JAVA_HOME=$(/usr/libexec/java_home)
+
+export PATH=$PATH:$HOME/Library/Python/2.7/bin
+export PATH=$PATH:$HOME/Library/Python/3.7/bin
 export GOPATH=$HOME/code/go
 export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$HOME/bin
 
 # ZSH syntax highlighting (must be at the end of the file)
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
