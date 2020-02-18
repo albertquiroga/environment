@@ -73,4 +73,4 @@ if [[ $USERNAME == 'ec2-user' ]]; then
 fi
 
 # Final message
-printf "${GREEN}Installation was successful. Relog into the console to enter oh-my-zsh. Keep in mind you have to install highlighting (OSX> brew install highlight Linux> install liblua https://rpmfind.net/linux/rpm2html/search.php?query=liblua-5.3.so()(64bit) , then install highlight http://www.andre-simon.de/zip/download.php.${NC}\n"
+printf "${GREEN}Installation was successful. Relog into the console to enter oh-my-zsh. Keep in mind you have to install highlighting (OSX> brew install highlight Linux> install liblua https://pkgs.org/download/liblua-5.3.so()(64bit) , then install highlight http://www.andre-simon.de/zip/download.php.${NC}\n"
