@@ -33,4 +33,8 @@ Nerd fonts (using 'hack' font): http://nerdfonts.com/#cheat-sheet
 
 7. Edit your the .zshrc file to set it like the one in this repo
 
+8. In iTerm, go to Preferences -> Appearance -> General -> Select 'Minimal' under Theme
+
+9. In iTerm, go to Preferences -> Appearance -> Windows and mark 'Hide scrollbars'
+
 Done.
