@@ -37,4 +37,6 @@ Nerd fonts (using 'hack' font): http://nerdfonts.com/#cheat-sheet
 
 9. In iTerm, go to Preferences -> Appearance -> Windows and mark 'Hide scrollbars'
 
+10. Go to "iTerm → Preferences → Profiles → Keys → Presets... → Natural Text Editing → Boom! Head explodes"
+
 Done.
