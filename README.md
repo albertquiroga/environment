@@ -19,11 +19,13 @@ Nerd fonts (using 'hack' font): http://nerdfonts.com/#cheat-sheet
 
 ## How-to
 
-1. Install iTerm2
-
-2. Go to Preferences -> Profiles -> Create a new profile and set is as default
-
-3. In the profile configuration, go to Colors -> Color Presets -> Import -> Import the 'aws.itermcolors' file
+1. Install iTerm2, then configure it:
+    1. Go to Preferences -> Profiles -> Create a new profile and set is as default
+    2. In the profile configuration, go to Colors -> Color Presets -> Import -> Import the 'aws.itermcolors' file, then select the new aws profile
+    3. In the profile configuration, go to Window and set the number of columns to 120
+    4. Go to settings -> Appearance
+    5. Under the General tab, set the Theme to Minimal
+    6. Under the Windows tab, mark the Hide scrollbars option
 
 4. Follow the 'environmentSetup.sh' script to install zsh, oh-my-zsh, plugins (zsh-autosuggestions, zsh-syntax-highlighting, zsh-output-highlighting)
 
