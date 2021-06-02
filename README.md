@@ -19,26 +19,22 @@ Nerd fonts (using 'hack' font): http://nerdfonts.com/#cheat-sheet
 
 ## How-to
 
-1. Install iTerm2, then configure it:
+1. Install Hack Nerd Font (or any other nerd font)
+
+2. Install iTerm2, then configure it:
     1. Go to Preferences -> Profiles -> Create a new profile and set is as default
     2. In the profile configuration, go to Colors -> Color Presets -> Import -> Import the 'aws.itermcolors' file, then select the new aws profile
     3. In the profile configuration, go to Window and set the number of columns to 120
-    4. Go to settings -> Appearance
-    5. Under the General tab, set the Theme to Minimal
-    6. Under the Windows tab, mark the Hide scrollbars option
+    4. In the profile configuration, go to Text and select Hack Nerd Font as the font
+    5. In the profile configuration, go to Keys -> Presets and seelct Natural Text Editing
+    6. Go to settings -> Appearance
+    7. Under the General tab, set the Theme to Minimal
+    8. Under the Windows tab, mark the Hide scrollbars option
 
-4. Follow the 'environmentSetup.sh' script to install zsh, oh-my-zsh, plugins (zsh-autosuggestions, zsh-syntax-highlighting, zsh-output-highlighting)
+2. Follow the 'environmentSetup.sh' script to install zsh, oh-my-zsh, plugins (zsh-autosuggestions, zsh-syntax-highlighting, zsh-output-highlighting)
 
-5. Install the powerlevel10k oh-my-zsh theme
+3. Install the powerlevel10k oh-my-zsh theme
 
-6. Install the 'hack' nerd font
-
-7. Edit your the .zshrc file to set it like the one in this repo
-
-8. In iTerm, go to Preferences -> Appearance -> General -> Select 'Minimal' under Theme
-
-9. In iTerm, go to Preferences -> Appearance -> Windows and mark 'Hide scrollbars'
-
-10. Go to "iTerm → Preferences → Profiles → Keys → Presets... → Natural Text Editing → Boom! Head explodes"
+4. Edit your the .zshrc file to set it like the one in this repo
 
 Done.
